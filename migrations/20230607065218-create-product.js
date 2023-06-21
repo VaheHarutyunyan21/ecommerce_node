@@ -25,6 +25,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references:{model:'Categories', key:'id'}
       },
+      img: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

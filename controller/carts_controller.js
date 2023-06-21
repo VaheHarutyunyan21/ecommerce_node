@@ -12,13 +12,6 @@ exports.all=(req,res)=>{
 
 
 exports.dataID=async(req,res)=>{
-    // const {id} = req.params;
-    // Cart.findByPk(id)
-    // .then((prod)=>{
-    //     res.status(201).json(prod)
-    // }).catch((err)=>{
-    //     res.status(500).json({error: err.message})
-    // })
     try {
       const cart = await Cart.findAll({
           where: {
@@ -28,8 +21,7 @@ exports.dataID=async(req,res)=>{
               {
                 model: Product,
                 as: 'productData',
-                attributes: ['id', 'name', 'price', 'description',],
-
+                attributes: ['id', 'name', 'price', 'description','img',],
               },
             ],
       });
@@ -86,11 +78,11 @@ exports.changId=(req,res)=>{
 };
 
 exports.deleteId= (req, res) => {
-    // const { id } = req.params;
-    // Cart.destroy ({ where: {id}})
-    // .then((prod)=>{
-    //     res.status(201).json(prod)
-    // }).catch((err)=>{
-    //     res.status(500).json({error: err.message})
-    // })
+    const { id } = req.params;
+    Cart.destroy ({ where: {id}})
+    .then((prod)=>{
+        res.status(201).json(prod)
+    }).catch((err)=>{
+        res.status(500).json({error: err.message})
+    })
 }

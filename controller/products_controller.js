@@ -1,5 +1,24 @@
 const {Product} = require('../models')
+const fs = require('fs')
 
+
+exports.upload=(req, res)=>{
+    if(req.file){
+        res.json(req.file)
+    }else{
+        res.json('failed to add image')
+    }
+};
+exports.images=(req, res)=>{
+    const image_name = req.params.name
+    fs.readFile(`./img/${image_name}`, function (err, data) {
+        if (err) {
+            return res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+};
 
 
 exports.all=(req,res)=>{
@@ -23,8 +42,8 @@ exports.dataID=(req,res)=>{
 
 
 exports.posts=(req,res)=>{
-    const {name,description,price,categoryId} = req.body;
-    Product.create({name,description,price,categoryId})
+    const {name,description,price,categoryId,img} = req.body;
+    Product.create({name,description,price,categoryId,img})
     .then((prod)=>{
         res.status(201).json(prod)
     }).catch((err)=>{
