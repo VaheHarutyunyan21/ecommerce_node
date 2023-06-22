@@ -1,4 +1,5 @@
 # ecommerce_node
+<<<<<<< HEAD
 
 ## Description
  
@@ -83,3 +84,5 @@ The server uses the following environment variables, which can be set in a .env 
 
 * SECRET - A secret key used for signing and verifying JWT tokens.
 Make sure to configure these environment variables appropriately before running the server to ensure proper functionality and connectivity with the MySQL database.
+=======
+>>>>>>> a26e7a174107205b28699478bdf2fecfc3ebbd1d
